@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is now going at ${this.speed} km/h.`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} slowed down to ${this.speed} km/h.`);
+  }
+}
+class EV extends Car {
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+    console.log(`${this.make}'s battery is now charged to ${chargeTo}%.`);
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.charge -= 1;
+    console.log(`${this.make} is now going at ${this.speed} km/h, with a charge of ${this.charge}%.`);
+  }
+}
+const tesla = new EV('Tesla', 120, 50);
+console.log('Tesla:');
+tesla.accelerate(); 
+tesla.brake();      
+tesla.chargeBattery(90); 
+tesla.accelerate(); 
+    </script>
+</body>
+</html>
